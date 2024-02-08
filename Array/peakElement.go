@@ -27,49 +27,39 @@ func findPeakElement(nums []int) int {
 	}
 
 	left := 0
-	right := len(nums) - 1
+	right := len(nums)
 
-	for left < right {
+	for left <= right {
 
 		mid := (left + right) / 2
 
-		if isFound(mid, nums) {
-
+		if isPeak(nums, mid) {
 			return mid
 		}
 
-		if mid != left && nums[mid] <= nums[left] {
-
-			right = mid - 1
-		} else {
+		if mid+1 < len(nums) && nums[mid] < nums[mid+1] {
 			left = mid + 1
+		} else {
+			right = mid - 1
 		}
 	}
-
 	return -1
-
 }
 
-func isFound(mid int, nums []int) bool {
+func isPeak(nums []int, index int) bool {
 
-	midMinus1 := 0
-	midPlus1 := 0
+	leftValue, rightValue := -9999999999, -9999999999
+	if index+1 < len(nums) {
 
-	if mid-1 < 0 {
-
-		midMinus1 = -99999999999
-	} else {
-		midMinus1 = nums[mid-1]
+		rightValue = nums[index+1]
 	}
 
-	if mid+1 >= len(nums) {
+	if index-1 >= 0 {
 
-		midPlus1 = 99999999999
-	} else {
-		midPlus1 = nums[mid+1]
+		leftValue = nums[index-1]
 	}
 
-	if nums[mid] > midMinus1 && nums[mid] > midPlus1 {
+	if nums[index] > leftValue && nums[index] > rightValue {
 
 		return true
 	}

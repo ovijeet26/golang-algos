@@ -16,6 +16,11 @@ func (s *Stack) Length() int {
 	return len(s.items)
 }
 
+func (s *Stack) Peek() string {
+
+	return s.items[s.Length()-1]
+}
+
 func (s *Stack) Pop() string {
 
 	size := len(s.items)
@@ -137,6 +142,10 @@ func (s *IntStack) Size() int {
 func (s *IntStack) Peek() int {
 
 	return s.items[s.Size()-1]
+}
+
+func (s *IntStack) ArrayValues() []int {
+	return s.items
 }
 
 type GenericStack struct {

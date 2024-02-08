@@ -8,6 +8,9 @@ import (
 	array "github.com/ovijeet/go/algos/Array"
 	dynamicprogramming "github.com/ovijeet/go/algos/DynamicProgramming"
 	hard "github.com/ovijeet/go/algos/LeetCode/Hard"
+	revision "github.com/ovijeet/go/algos/Revision"
+	revisionStack "github.com/ovijeet/go/algos/Revision/Stack"
+	revisionString "github.com/ovijeet/go/algos/Revision/String"
 	tree "github.com/ovijeet/go/algos/Tree"
 	"github.com/ovijeet/go/algos/backtracking"
 	"github.com/ovijeet/go/algos/graph"
@@ -19,7 +22,17 @@ import (
 )
 
 func main() {
-
+	revisionStack.DecodeCaller()
+	revisionStack.ValidCaller()
+	revisionString.LongestCharRCaller()
+	//revisionString.TypedOutStringCaller()
+	revision.MergeSortCaller()
+	revision.ThreesumCaller()
+	revision.FnLCaller()
+	revision.BSCaller()
+	revision.LongestCaller()
+	revision.QSCaller()
+	revision.InvokeRemoveDuplicates()
 	array.RemoveDuplicate2Caller()
 	array.RemoveDuplicateCaller()
 	array.PeakElementCaller()

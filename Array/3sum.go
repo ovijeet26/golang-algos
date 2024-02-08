@@ -3,6 +3,44 @@ package array
 import "fmt"
 
 // Leet code link -> https://leetcode.com/problems/3sum/
+func threeSum_Cleaner(nums []int) [][]int {
+	// Sorting the array
+	qs(nums, 0, len(nums)-1)
+	pointer, resultSet := 0, make([][]int, 0)
+
+	// Loop for checking against 1 value.
+	for pointer < len(nums) {
+		if pointer > 0 && nums[pointer-1] == nums[pointer] {
+			pointer++
+			continue
+		}
+
+		left, right := pointer+1, len(nums)-1
+		// Two sum implememtation
+		// Two pointer on both sides,
+		// Increase left if Sum is lesser than the target since the array is sorted and adding left will only reduce the total sum
+		// Same as left we have to decrease the right when sum is greater than the target.
+		for left < right {
+			sumOfThree := nums[pointer] + nums[left] + nums[right]
+			if sumOfThree > 0 {
+				right--
+			} else if sumOfThree < 0 {
+				left++
+			} else {
+				resultSet = append(resultSet, []int{nums[pointer], nums[left], nums[right]})
+				left++
+				right--
+				// If the previous value is same.
+				for left < right && nums[left] == nums[left-1] {
+					left++
+				}
+			}
+		}
+		pointer++
+	}
+	return resultSet
+}
+
 func threeSum(nums []int) [][]int {
 
 	// Sort the entire array
