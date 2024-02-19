@@ -29,6 +29,10 @@ func (s *Stack) Pop() string {
 	return poppedItem
 }
 
+func (s *Stack) ArrayValues() []string {
+	return s.items
+}
+
 // Leet code link - https://leetcode.com/problems/valid-parentheses/submissions/
 func isValid(s string) bool {
 
@@ -156,7 +160,6 @@ func (s *GenericStack) Push(value interface{}) {
 
 	s.items = append(s.items, value)
 }
-
 func (s *GenericStack) Pop() interface{} {
 
 	size := len(s.items)

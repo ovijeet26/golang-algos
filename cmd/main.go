@@ -22,6 +22,7 @@ import (
 )
 
 func main() {
+	revisionStack.RemoveKCaller()
 	revisionStack.DecodeCaller()
 	revisionStack.ValidCaller()
 	revisionString.LongestCharRCaller()

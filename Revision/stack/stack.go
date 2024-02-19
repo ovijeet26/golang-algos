@@ -27,6 +27,11 @@ func (s *Stack) Pop() string {
 	return poppedItem
 }
 
+func (s *Stack) ArrayValues() []string {
+
+	return s.items
+}
+
 type IntStack struct {
 	items []int
 }
@@ -56,5 +61,5 @@ func (s *IntStack) Pop() int {
 
 func (s *IntStack) ArrrayValues() []int {
 
-	return s.items[]
+	return s.items
 }

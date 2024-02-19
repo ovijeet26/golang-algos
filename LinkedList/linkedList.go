@@ -4,7 +4,7 @@ import "fmt"
 
 type ListNode struct {
 	data int
-	next *ListNode
+	Next *ListNode
 }
 
 type LinkedList struct {
@@ -14,13 +14,13 @@ type LinkedList struct {
 
 func NewNode(data int) ListNode {
 
-	return ListNode{data: data, next: nil}
+	return ListNode{data: data, Next: nil}
 }
 
 // Add a new ListNode at the beginning of a linked list
 func (l *LinkedList) Prepend(newNode *ListNode) {
 
-	newNode.next = l.head
+	newNode.Next = l.head
 	l.head = newNode
 
 	l.length++
@@ -35,21 +35,21 @@ func (l *LinkedList) DeleteWithValue(searchKey int) {
 	}
 
 	if previousToDelete.data == searchKey {
-		l.head = previousToDelete.next
+		l.head = previousToDelete.Next
 		l.length--
 		return
 	}
 
-	for previousToDelete.next.next != nil {
+	for previousToDelete.Next.Next != nil {
 
-		if previousToDelete.next.data == searchKey {
+		if previousToDelete.Next.data == searchKey {
 
-			afterDelete := previousToDelete.next.next
-			previousToDelete.next = afterDelete
+			afterDelete := previousToDelete.Next.Next
+			previousToDelete.Next = afterDelete
 			l.length--
 		} else {
 
-			previousToDelete = previousToDelete.next
+			previousToDelete = previousToDelete.Next
 		}
 	}
 }
@@ -62,10 +62,10 @@ func (l LinkedList) PrintList() {
 		return
 	}
 
-	for ptrNode.next != nil {
+	for ptrNode.Next != nil {
 
 		fmt.Printf("%v -> ", ptrNode.data)
-		ptrNode = ptrNode.next
+		ptrNode = ptrNode.Next
 	}
 
 	fmt.Print("nil \n")
@@ -81,14 +81,14 @@ func (l *LinkedList) Reverse() {
 	// Take care of border cases
 	if currentNode == nil {
 		return
-	} else if currentNode.next == nil {
+	} else if currentNode.Next == nil {
 		return
 	}
 
 	for currentNode != nil {
 
-		nextNode = currentNode.next
-		currentNode.next = prevNode
+		nextNode = currentNode.Next
+		currentNode.Next = prevNode
 
 		prevNode = currentNode
 		currentNode = nextNode
@@ -100,14 +100,14 @@ func (l *LinkedList) Reverse() {
 //1->2->3->4-> nil
 func RecursiveReverse(head *ListNode) *ListNode {
 
-	if head == nil || head.next == nil {
+	if head == nil || head.Next == nil {
 
 		return head
 	}
 
-	nodePtr := RecursiveReverse(head.next)
-	head.next.next = head
-	head.next = nil
+	nodePtr := RecursiveReverse(head.Next)
+	head.Next.Next = head
+	head.Next = nil
 	return nodePtr
 }
 
@@ -141,7 +141,7 @@ func ReverseBetween(head *ListNode, left int, right int) *ListNode {
 
 		if counter < left-1 {
 
-			currentNode = currentNode.next
+			currentNode = currentNode.Next
 			counter++
 			continue
 		}
@@ -168,8 +168,8 @@ func ReverseBetween(head *ListNode, left int, right int) *ListNode {
 
 		if counter >= left && counter <= right {
 
-			nextNode = currentNode.next
-			currentNode.next = prevNode
+			nextNode = currentNode.Next
+			currentNode.Next = prevNode
 			prevNode = currentNode
 			currentNode = nextNode
 		}
@@ -178,12 +178,12 @@ func ReverseBetween(head *ListNode, left int, right int) *ListNode {
 
 			break
 		}
-		currentNode = currentNode.next
+		currentNode = currentNode.Next
 		counter++
 	}
 
-	startNode.next = secondHead
-	secondTailNode.next = endNode
+	startNode.Next = secondHead
+	secondTailNode.Next = endNode
 
 	return head
 }
@@ -207,7 +207,7 @@ func DetectCycleUsingSet(head *ListNode) *ListNode {
 		}
 
 		seenNodes[currentNode] = present
-		currentNode = currentNode.next
+		currentNode = currentNode.Next
 	}
 
 	return currentNode
@@ -223,10 +223,10 @@ func DetectCycle(head *ListNode) *ListNode {
 
 	isCycleDetected := false
 
-	for fastPtr != nil && fastPtr.next != nil && fastPtr.next.next != nil {
+	for fastPtr != nil && fastPtr.Next != nil && fastPtr.Next.Next != nil {
 
-		slowPtr = slowPtr.next
-		fastPtr = fastPtr.next.next
+		slowPtr = slowPtr.Next
+		fastPtr = fastPtr.Next.Next
 
 		if slowPtr == fastPtr {
 			isCycleDetected = true
@@ -241,8 +241,8 @@ func DetectCycle(head *ListNode) *ListNode {
 
 		for beginingPtr != secondPointer {
 
-			beginingPtr = beginingPtr.next
-			secondPointer = secondPointer.next
+			beginingPtr = beginingPtr.Next
+			secondPointer = secondPointer.Next
 		}
 		return beginingPtr
 
