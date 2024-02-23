@@ -9,6 +9,7 @@ import (
 	dynamicprogramming "github.com/ovijeet/go/algos/DynamicProgramming"
 	hard "github.com/ovijeet/go/algos/LeetCode/Hard"
 	revision "github.com/ovijeet/go/algos/Revision"
+	revisionLL "github.com/ovijeet/go/algos/Revision/Linkedlist"
 	revisionStack "github.com/ovijeet/go/algos/Revision/Stack"
 	revisionString "github.com/ovijeet/go/algos/Revision/String"
 	tree "github.com/ovijeet/go/algos/Tree"
@@ -22,6 +23,9 @@ import (
 )
 
 func main() {
+	revisionLL.MegeListCaller()
+	revisionLL.ReoderCaller()
+	revisionLL.MergeListCaller()
 	revisionStack.RemoveKCaller()
 	revisionStack.DecodeCaller()
 	revisionStack.ValidCaller()
